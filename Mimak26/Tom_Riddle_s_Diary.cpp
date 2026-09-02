@@ -11,30 +11,25 @@ using namespace std;
 #define dd double
 #define enx "\n"
 
-void solve(){
-
-    
-}
-
 int main(){
 
     ios::sync_with_stdio(0);cin.tie(0);
     
-     set<int> s;
-     s.insert(2);
-     s.insert(3);
-     s.insert(4);
-     s.insert(5);
-     s.insert(6);
+    map<string,int> mp;
+    
+    int n;
+    cin >> n;
 
+    while(n--){
+        string s;cin >> s;
 
-     cout << s.size() << enx;
-
-     auto it=s.begin();
-     
-     cout << *it ;
-
-
+        if(mp.find(s) != mp.end()){
+              cout << "YES" << enx;
+        }else {
+            mp[s]=1;
+            cout << "NO" << enx;
+        }
+    }
     
     return 0;
 }
