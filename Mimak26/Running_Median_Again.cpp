@@ -1,88 +1,76 @@
-/*     AUTHOR :Malik Istiak  Ahamed Rohan
-       Problem Name:
-       Problem Platform:
-       Logic :
-       Problem  Link :
-       Github : rohan9077/CP-Journey
-*/
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
 #define dd double
 #define enx "\n"
 
-
-
 void solve(){
 
-    int roro=0;
-    set<int> s;
+    multiset<ll> s;
+    multiset<ll> s2;
+
+    ll f;cin >> f;
+    if(f==0 || f==-1)return;
+
+    s.insert(f);
+
     ll x;
-    while(cin >> x  && x != 0){
-         
-        if(x==0){
-            break;
-        }else if(x == -1){
-               int n=s.size();
-               
+    while(cin >> x && x!=0){
 
-               if(n%2 != 0){
-                   n=n/2;
-                   auto it=s.begin();
-                   for(int i=1;i<=n;i++){
-                         it++;
-                   }
+        if(x!=-1){
+            if(s.empty() || x<=*s.rbegin())
+                s.insert(x);
+            else
+                s2.insert(x);
+            continue;
+        }
 
-                   cout << *it << enx;
+        while(s.size()>s2.size()+1){
+            auto it=s.rbegin();
+            ll val=*it;
+            s2.insert(val);
+            s.erase(s.find(val));
+        }
 
-                   s.erase(*it);
-               }else if(n==0){
+        while(s2.size()>s.size()){
+            auto it=s2.begin();
+            ll val=*it;
+            s.insert(val);
+            s2.erase(s2.find(val));
+        }
 
-               }else {
-                    n=n/2;
-                    auto it=s.begin();
-                    for(int i=1;i<n;i++){
-                         it++;
-                    }
+        if(s.size()>s2.size()){
+            auto it=s.rbegin();
+            ll val=*it;
+            cout<<val<<enx;
+            s.erase(s.find(val));
+        }else{
+            auto x=s.rbegin();
+            auto y=s2.begin();
 
-                    int mal=*it;
-                    it++;
-                    int bro=*it;
-
-                    if(bro>=mal){
-                        cout << mal << enx;
-                        s.erase(mal);
-                    }else {
-                         cout << bro << enx;
-                         s.erase(bro);
-                    }
-
-               }
-
-        }else {
-
-            s.insert(x);
-
+            if(*x<=*y){
+                ll val=*x;
+                cout<<val<<enx;
+                s.erase(s.find(val));
+            }else{
+                ll val=*y;
+                cout<<val<<enx;
+                s2.erase(s2.find(val));
+            }
         }
     }
-
-
-    // for( auto it : s){
-    //     cout << it << " ";
-    // }
-
-    
 }
 
 int main(){
 
     ios::sync_with_stdio(0);cin.tie(0);
-    
-     int t;cin >> t;
 
-     while(t--){
-         solve();
-     }
+    int t;cin>>t;
+
     
+    while(t--){
+        solve();
+    }
+
     return 0;
 }
