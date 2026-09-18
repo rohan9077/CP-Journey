@@ -1,4 +1,4 @@
-## Vector
+## STL
 
 - [ ] [Soldier and Cards] :https://codeforces.com/problemset/problem/546/C
 - [ ] Problem 2
@@ -14,3 +14,8 @@
 ## Priority Queue
 
 - [ ] Problem 5
+
+
+## Binary Search 
+
+-[ ][ ] : 
